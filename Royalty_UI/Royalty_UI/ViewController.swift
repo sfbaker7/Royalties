@@ -10,6 +10,19 @@ import Cocoa
 
 class ViewController: NSViewController {
 
+    @IBOutlet weak var welcome_msg: NSTextField!
+    @IBOutlet weak var format_selector: NSPopUpButton!
+    @IBOutlet weak var upload_button: NSButton!
+    
+    
+    @IBAction func handle_upload(_ sender: Any) {
+    }
+    
+    @IBAction func handle_format(_ sender: Any) {
+        let format_instance = format_profile(format_id: format_selector.titleOfSelectedItem!)
+        welcome_msg.stringValue =  format_instance.toString()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
