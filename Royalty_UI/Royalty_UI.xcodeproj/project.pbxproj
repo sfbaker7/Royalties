@@ -7,7 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		992991B61E14187900DCC945 /* format_profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992991B51E14187900DCC945 /* format_profile.swift */; };
+		992991B61E14187900DCC945 /* Format_profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992991B51E14187900DCC945 /* Format_profile.swift */; };
+		992991B91E1436B100DCC945 /* Data_processor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992991B81E1436B100DCC945 /* Data_processor.swift */; };
+		992991BB1E156CA500DCC945 /* Sony_model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 992991BA1E156CA500DCC945 /* Sony_model.swift */; };
 		9973BBB61E0DB42900CDCF10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973BBB51E0DB42900CDCF10 /* AppDelegate.swift */; };
 		9973BBB81E0DB42900CDCF10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973BBB71E0DB42900CDCF10 /* ViewController.swift */; };
 		9973BBBA1E0DB42900CDCF10 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9973BBB91E0DB42900CDCF10 /* Assets.xcassets */; };
@@ -34,7 +36,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		992991B51E14187900DCC945 /* format_profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = format_profile.swift; sourceTree = "<group>"; };
+		992991B51E14187900DCC945 /* Format_profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Format_profile.swift; sourceTree = "<group>"; };
+		992991B81E1436B100DCC945 /* Data_processor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data_processor.swift; sourceTree = "<group>"; };
+		992991BA1E156CA500DCC945 /* Sony_model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sony_model.swift; sourceTree = "<group>"; };
 		9973BBB21E0DB42900CDCF10 /* Royalty_UI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Royalty_UI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9973BBB51E0DB42900CDCF10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9973BBB71E0DB42900CDCF10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -82,12 +86,21 @@
 			name = Controllers;
 			sourceTree = "<group>";
 		};
-		992991B41E14184A00DCC945 /* Format Layer */ = {
+		992991B41E14184A00DCC945 /* Format Models */ = {
 			isa = PBXGroup;
 			children = (
-				992991B51E14187900DCC945 /* format_profile.swift */,
+				992991B51E14187900DCC945 /* Format_profile.swift */,
+				992991BA1E156CA500DCC945 /* Sony_model.swift */,
 			);
-			name = "Format Layer";
+			name = "Format Models";
+			sourceTree = "<group>";
+		};
+		992991B71E14369D00DCC945 /* Data Layer */ = {
+			isa = PBXGroup;
+			children = (
+				992991B81E1436B100DCC945 /* Data_processor.swift */,
+			);
+			name = "Data Layer";
 			sourceTree = "<group>";
 		};
 		9973BBA91E0DB42900CDCF10 = {
@@ -113,7 +126,8 @@
 		9973BBB41E0DB42900CDCF10 /* Royalty_UI */ = {
 			isa = PBXGroup;
 			children = (
-				992991B41E14184A00DCC945 /* Format Layer */,
+				992991B71E14369D00DCC945 /* Data Layer */,
+				992991B41E14184A00DCC945 /* Format Models */,
 				992991B31E14183100DCC945 /* Controllers */,
 				9973BBB51E0DB42900CDCF10 /* AppDelegate.swift */,
 				9973BBB91E0DB42900CDCF10 /* Assets.xcassets */,
@@ -275,8 +289,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				9973BBB81E0DB42900CDCF10 /* ViewController.swift in Sources */,
+				992991B91E1436B100DCC945 /* Data_processor.swift in Sources */,
 				9973BBB61E0DB42900CDCF10 /* AppDelegate.swift in Sources */,
-				992991B61E14187900DCC945 /* format_profile.swift in Sources */,
+				992991B61E14187900DCC945 /* Format_profile.swift in Sources */,
+				992991BB1E156CA500DCC945 /* Sony_model.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

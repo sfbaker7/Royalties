@@ -9,7 +9,7 @@
 import Foundation
 
 
-class format_profile : NSObject{
+class Format_profile : NSObject{
     
     var format: String
     
