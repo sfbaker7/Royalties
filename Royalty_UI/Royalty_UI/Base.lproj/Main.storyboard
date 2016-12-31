@@ -722,7 +722,7 @@
                                 </connections>
                             </popUpButton>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gB-Wf-IkS">
-                                <rect key="frame" x="352" y="75" width="101" height="32"/>
+                                <rect key="frame" x="365" y="75" width="101" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qJd-hM-IlU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -733,11 +733,11 @@
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="1IZ-WV-Gce">
-                                <rect key="frame" x="190" y="83" width="100" height="20"/>
+                                <rect key="frame" x="119" y="19" width="254" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9o0-Tg-0R0">
-                                <rect key="frame" x="14" y="75" width="81" height="32"/>
+                                <rect key="frame" x="26" y="75" width="81" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <buttonCell key="cell" type="push" title="Upload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ytc-Vp-q6b">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -748,16 +748,28 @@
                                 </connections>
                             </button>
                             <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ui6-eb-6G1">
-                                <rect key="frame" x="455" y="85" width="16" height="16"/>
+                                <rect key="frame" x="407" y="56" width="16" height="16"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                             </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6H-q9-tmB">
+                                <rect key="frame" x="30" y="124" width="421" height="66"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="2xH-xn-Aqv">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="download_button" destination="9gB-Wf-IkS" id="imW-Z7-nh6"/>
+                        <outlet property="download_indc" destination="ui6-eb-6G1" id="TMn-J5-Q4J"/>
                         <outlet property="format_selector" destination="Suc-kY-98h" id="kW8-Ai-mMN"/>
                         <outlet property="format_type" destination="FYi-PN-bRw" id="DPj-C0-RAo"/>
                         <outlet property="handle_format" destination="tYe-iF-Bsg" id="u12-IB-SaA"/>
+                        <outlet property="load_bar" destination="1IZ-WV-Gce" id="7kv-N7-yIB"/>
+                        <outlet property="test_text1" destination="F6H-q9-tmB" id="Bcu-gz-eKh"/>
                         <outlet property="upload_button" destination="9o0-Tg-0R0" id="70a-Px-lhT"/>
                         <outlet property="welcome_msg" destination="ieK-MC-ppu" id="iaL-TL-rcl"/>
                     </connections>
