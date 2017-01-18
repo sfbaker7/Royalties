@@ -18,7 +18,6 @@
 		9973BBD31E0DB42900CDCF10 /* Royalty_UIUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973BBD21E0DB42900CDCF10 /* Royalty_UIUITests.swift */; };
 		9973C0AE1E1C03670099BDEF /* ProcessError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9973C0AD1E1C03670099BDEF /* ProcessError.swift */; };
 		998922C41E2D57B400DA5266 /* ASCAP_Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998922C31E2D57B400DA5266 /* ASCAP_Model.swift */; };
-		998922C61E2D5B3200DA5266 /* ASCAP_Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998922C51E2D5B3200DA5266 /* ASCAP_Node.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +55,6 @@
 		9973BBD41E0DB42900CDCF10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9973C0AD1E1C03670099BDEF /* ProcessError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProcessError.swift; sourceTree = "<group>"; };
 		998922C31E2D57B400DA5266 /* ASCAP_Model.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAP_Model.swift; sourceTree = "<group>"; };
-		998922C51E2D5B3200DA5266 /* ASCAP_Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCAP_Node.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +97,6 @@
 				992991BA1E156CA500DCC945 /* BMI_model.swift */,
 				9970CBDE1E24060D005E1276 /* SATV_Model.swift */,
 				998922C31E2D57B400DA5266 /* ASCAP_Model.swift */,
-				998922C51E2D5B3200DA5266 /* ASCAP_Node.swift */,
 			);
 			name = "Format Models";
 			sourceTree = "<group>";
@@ -297,7 +294,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				998922C61E2D5B3200DA5266 /* ASCAP_Node.swift in Sources */,
 				9973BBB81E0DB42900CDCF10 /* ViewController.swift in Sources */,
 				9970CBDF1E24060D005E1276 /* SATV_Model.swift in Sources */,
 				9973BBB61E0DB42900CDCF10 /* AppDelegate.swift in Sources */,
