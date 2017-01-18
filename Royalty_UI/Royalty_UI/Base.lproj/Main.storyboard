@@ -682,38 +682,33 @@
         <scene sceneID="hIz-AP-VOD">
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Royalty_UI" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" wantsLayer="YES" id="m2S-Jp-Qdl">
+                    <view key="view" wantsLayer="YES" alphaValue="0.90000000000000002" id="m2S-Jp-Qdl">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieK-MC-ppu">
-                                <rect key="frame" x="18" y="221" width="444" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ieK-MC-ppu">
+                                <rect key="frame" x="13" y="221" width="444" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="2qg-Cr-LF6"/>
+                                </constraints>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Select Format" id="ig5-NF-kiW">
                                     <font key="font" metaFont="system" size="16"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Suc-kY-98h">
-                                <rect key="frame" x="30" y="189" width="433" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" selectedItem="FYi-PN-bRw" id="zhP-dP-YKm">
+                            <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Suc-kY-98h">
+                                <rect key="frame" x="24" y="177" width="433" height="26"/>
+                                <popUpButtonCell key="cell" type="push" title="Select..." bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" pullsDown="YES" arrowPosition="noArrow" selectedItem="FYi-PN-bRw" id="zhP-dP-YKm">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="Qwm-Wl-a8M">
                                         <items>
-                                            <menuItem title="Select..." state="on" id="FYi-PN-bRw">
+                                            <menuItem title="Select..." state="on" hidden="YES" id="FYi-PN-bRw">
                                                 <connections>
                                                     <action selector="handle_sony:" target="XfG-lQ-9wD" id="lDd-FS-R97"/>
                                                 </connections>
                                             </menuItem>
-                                            <menuItem title="BMI" id="tYe-iF-Bsg">
-                                                <connections>
-                                                    <action selector="handle_format:" target="XfG-lQ-9wD" id="CpT-WT-rOg"/>
-                                                </connections>
-                                            </menuItem>
-                                            <menuItem title="Lefrak" id="dgK-ex-9LX"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
@@ -721,9 +716,8 @@
                                     <action selector="handle_format:" target="XfG-lQ-9wD" id="jaw-bT-zoR"/>
                                 </connections>
                             </popUpButton>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9gB-Wf-IkS">
-                                <rect key="frame" x="365" y="75" width="101" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9gB-Wf-IkS">
+                                <rect key="frame" x="365" y="13" width="101" height="32"/>
                                 <buttonCell key="cell" type="push" title="Download" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="qJd-hM-IlU">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -732,13 +726,11 @@
                                     <action selector="handle_download:" target="XfG-lQ-9wD" id="SIT-ox-QNS"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="1IZ-WV-Gce">
-                                <rect key="frame" x="119" y="19" width="254" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9o0-Tg-0R0">
-                                <rect key="frame" x="26" y="75" width="81" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9o0-Tg-0R0">
+                                <rect key="frame" x="21" y="13" width="81" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="69" id="w2T-P3-nKV"/>
+                                </constraints>
                                 <buttonCell key="cell" type="push" title="Upload" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ytc-Vp-q6b">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -747,30 +739,48 @@
                                     <action selector="handle_upload:" target="XfG-lQ-9wD" id="sxL-I1-03Z"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="ui6-eb-6G1">
-                                <rect key="frame" x="407" y="56" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="vO5-if-y5R">
+                                <rect key="frame" x="191" y="19" width="99" height="20"/>
                             </progressIndicator>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F6H-q9-tmB">
-                                <rect key="frame" x="30" y="124" width="421" height="66"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Label" id="2xH-xn-Aqv">
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDu-II-fhc">
+                                <rect key="frame" x="13" y="99" width="170" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="166" id="Ge4-Po-gSK"/>
+                                    <constraint firstAttribute="height" constant="32" id="rSZ-CT-VNb"/>
+                                </constraints>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" id="fQd-Jv-GQy">
                                     <font key="font" metaFont="system"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                         </subviews>
+                        <constraints>
+                            <constraint firstItem="ieK-MC-ppu" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" constant="20" symbolic="YES" id="4Dy-6T-UbB"/>
+                            <constraint firstItem="ieK-MC-ppu" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="15" id="9Rx-zs-RfR"/>
+                            <constraint firstAttribute="bottom" secondItem="9o0-Tg-0R0" secondAttribute="bottom" constant="20" symbolic="YES" id="EtC-bZ-xyz"/>
+                            <constraint firstItem="Suc-kY-98h" firstAttribute="leading" secondItem="9o0-Tg-0R0" secondAttribute="leading" id="Fu0-gV-fRj"/>
+                            <constraint firstAttribute="trailing" secondItem="ieK-MC-ppu" secondAttribute="trailing" constant="25" id="LlZ-tE-t7U"/>
+                            <constraint firstItem="ieK-MC-ppu" firstAttribute="leading" secondItem="HDu-II-fhc" secondAttribute="leading" id="Pe7-GF-FOb"/>
+                            <constraint firstItem="9o0-Tg-0R0" firstAttribute="baseline" secondItem="9gB-Wf-IkS" secondAttribute="baseline" id="V91-Tp-PMn"/>
+                            <constraint firstItem="9gB-Wf-IkS" firstAttribute="leading" secondItem="vO5-if-y5R" secondAttribute="trailing" constant="81" id="Wnk-G8-cZ2"/>
+                            <constraint firstItem="9o0-Tg-0R0" firstAttribute="bottom" secondItem="vO5-if-y5R" secondAttribute="bottom" id="bJR-mQ-XMn"/>
+                            <constraint firstItem="Suc-kY-98h" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="ccV-pb-YnH"/>
+                            <constraint firstItem="HDu-II-fhc" firstAttribute="top" secondItem="Suc-kY-98h" secondAttribute="bottom" constant="49" id="l5C-Yj-H9P"/>
+                            <constraint firstItem="Suc-kY-98h" firstAttribute="top" secondItem="ieK-MC-ppu" secondAttribute="bottom" constant="20" id="len-65-Cwt"/>
+                            <constraint firstAttribute="trailing" secondItem="9gB-Wf-IkS" secondAttribute="trailing" constant="20" symbolic="YES" id="sIh-zg-YJ8"/>
+                            <constraint firstItem="Suc-kY-98h" firstAttribute="centerX" secondItem="vO5-if-y5R" secondAttribute="centerX" id="sdF-WP-4lm"/>
+                            <constraint firstItem="Suc-kY-98h" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="27" id="tCC-qZ-FdW"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="communicator" destination="HDu-II-fhc" id="FEa-Th-SMy"/>
                         <outlet property="download_button" destination="9gB-Wf-IkS" id="imW-Z7-nh6"/>
-                        <outlet property="download_indc" destination="ui6-eb-6G1" id="TMn-J5-Q4J"/>
                         <outlet property="format_selector" destination="Suc-kY-98h" id="kW8-Ai-mMN"/>
                         <outlet property="format_type" destination="FYi-PN-bRw" id="DPj-C0-RAo"/>
-                        <outlet property="handle_format" destination="tYe-iF-Bsg" id="u12-IB-SaA"/>
-                        <outlet property="load_bar" destination="1IZ-WV-Gce" id="7kv-N7-yIB"/>
-                        <outlet property="test_text1" destination="F6H-q9-tmB" id="Bcu-gz-eKh"/>
+                        <outlet property="progress_bar" destination="vO5-if-y5R" id="UV7-xG-Dmh"/>
                         <outlet property="upload_button" destination="9o0-Tg-0R0" id="70a-Px-lhT"/>
+                        <outlet property="view" destination="m2S-Jp-Qdl" id="Oz4-oS-nul"/>
                         <outlet property="welcome_msg" destination="ieK-MC-ppu" id="iaL-TL-rcl"/>
                     </connections>
                 </viewController>
