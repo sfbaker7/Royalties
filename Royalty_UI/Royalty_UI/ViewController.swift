@@ -103,14 +103,15 @@ class ViewController: NSViewController {
             try self.profile.performProcess()
         }
         catch ProcessError.noFormat{
-            self.communicator.stringValue = "No Format Selected"
+            self.communicator.stringValue = "Error: No Format Selected"
             return
         }
         catch ProcessError.wrongFormat {
-            self.communicator.stringValue = "Wrong Format"
+            self.communicator.stringValue = "Error: Wrong Format"
             return
         }
         catch {
+            self.communicator.stringValue = "Error: This File is Not Compatible for this Program"
             return
         }
         
