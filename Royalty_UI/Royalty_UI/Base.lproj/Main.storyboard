@@ -739,9 +739,6 @@
                                     <action selector="handle_upload:" target="XfG-lQ-9wD" id="sxL-I1-03Z"/>
                                 </connections>
                             </button>
-                            <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="vO5-if-y5R">
-                                <rect key="frame" x="191" y="19" width="99" height="20"/>
-                            </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HDu-II-fhc">
                                 <rect key="frame" x="13" y="99" width="170" height="32"/>
                                 <constraints>
@@ -763,13 +760,10 @@
                             <constraint firstAttribute="trailing" secondItem="ieK-MC-ppu" secondAttribute="trailing" constant="25" id="LlZ-tE-t7U"/>
                             <constraint firstItem="ieK-MC-ppu" firstAttribute="leading" secondItem="HDu-II-fhc" secondAttribute="leading" id="Pe7-GF-FOb"/>
                             <constraint firstItem="9o0-Tg-0R0" firstAttribute="baseline" secondItem="9gB-Wf-IkS" secondAttribute="baseline" id="V91-Tp-PMn"/>
-                            <constraint firstItem="9gB-Wf-IkS" firstAttribute="leading" secondItem="vO5-if-y5R" secondAttribute="trailing" constant="81" id="Wnk-G8-cZ2"/>
-                            <constraint firstItem="9o0-Tg-0R0" firstAttribute="bottom" secondItem="vO5-if-y5R" secondAttribute="bottom" id="bJR-mQ-XMn"/>
                             <constraint firstItem="Suc-kY-98h" firstAttribute="centerX" secondItem="m2S-Jp-Qdl" secondAttribute="centerX" id="ccV-pb-YnH"/>
                             <constraint firstItem="HDu-II-fhc" firstAttribute="top" secondItem="Suc-kY-98h" secondAttribute="bottom" constant="49" id="l5C-Yj-H9P"/>
                             <constraint firstItem="Suc-kY-98h" firstAttribute="top" secondItem="ieK-MC-ppu" secondAttribute="bottom" constant="20" id="len-65-Cwt"/>
                             <constraint firstAttribute="trailing" secondItem="9gB-Wf-IkS" secondAttribute="trailing" constant="20" symbolic="YES" id="sIh-zg-YJ8"/>
-                            <constraint firstItem="Suc-kY-98h" firstAttribute="centerX" secondItem="vO5-if-y5R" secondAttribute="centerX" id="sdF-WP-4lm"/>
                             <constraint firstItem="Suc-kY-98h" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" constant="27" id="tCC-qZ-FdW"/>
                         </constraints>
                     </view>
@@ -778,7 +772,6 @@
                         <outlet property="download_button" destination="9gB-Wf-IkS" id="imW-Z7-nh6"/>
                         <outlet property="format_selector" destination="Suc-kY-98h" id="kW8-Ai-mMN"/>
                         <outlet property="format_type" destination="FYi-PN-bRw" id="DPj-C0-RAo"/>
-                        <outlet property="progress_bar" destination="vO5-if-y5R" id="UV7-xG-Dmh"/>
                         <outlet property="upload_button" destination="9o0-Tg-0R0" id="70a-Px-lhT"/>
                         <outlet property="view" destination="m2S-Jp-Qdl" id="Oz4-oS-nul"/>
                         <outlet property="welcome_msg" destination="ieK-MC-ppu" id="iaL-TL-rcl"/>

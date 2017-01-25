@@ -26,19 +26,10 @@ class ViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //format selector setup
-        format_selector.addItems(withTitles: ["BMI","ASCAP", "SATV"])
+        format_selector.addItems(withTitles: ["ASCAP Domestic", "ASCAP International", "BMG", "BMI", "SATV"])
         format_selector.isTransparent = false
         
-        //progress bar setup
-        self.progress_bar.isDisplayedWhenStopped = false
-        self.progress_bar.isBezeled = true
-        self.progress_bar.controlTint = NSControlTint.blueControlTint
-        self.progress_bar.isIndeterminate = true
-        
 
-        
-        
-        
         
         
         // Do any additional setup after loading the view.
@@ -65,7 +56,7 @@ class ViewController: NSViewController {
         file_picker.canChooseDirectories = false
         file_picker.runModal()
         
-        guard var fileURL = file_picker.url else{
+        guard let fileURL = file_picker.url else{
             file_picker.close()
             return
         }
@@ -77,10 +68,9 @@ class ViewController: NSViewController {
         //read file
         do {
             let file_contents = try String(contentsOf: fileURL, encoding: String.Encoding.utf8)
-            let file_rows = file_contents.components(separatedBy: "\n") as [String]
+//            let file_rows = file_contents.components(separatedBy: NSCharacterSet.newlines) as [String]
+            let file_rows = file_contents.components(separatedBy: "\n")
             temp_array = file_rows
-//            print(file_rows)
-//            print(file_rows.count)
         }
         catch {
             
@@ -89,12 +79,10 @@ class ViewController: NSViewController {
         }
             
         
-        self.progress_bar.startAnimation(Any?)
         
         //sets the input data for the format profile
         self.profile.setInput(contents: temp_array)
         
-        self.progress_bar.stopAnimation(Any?)
     }
     
     @IBAction func handle_download(_ sender: Any) {
@@ -107,7 +95,7 @@ class ViewController: NSViewController {
             return
         }
         catch ProcessError.wrongFormat {
-            self.communicator.stringValue = "Error: Wrong Format"
+            self.communicator.stringValue = "Error: No Format Selected"
             return
         }
         catch {
@@ -140,6 +128,8 @@ class ViewController: NSViewController {
         self.profile.setFormat(form: format_selector.titleOfSelectedItem!)
         self.format_selector.setTitle(format_selector.titleOfSelectedItem!)
     }
+    
+
     
 
 

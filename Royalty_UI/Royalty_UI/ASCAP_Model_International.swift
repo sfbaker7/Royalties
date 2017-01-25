@@ -9,7 +9,7 @@
 import Foundation
 
 
-class ASCAP_Model : NSObject {
+class ASCAP_Model_International : NSObject {
     
     var findata: Array<String> = []
     var count : Int = 0
@@ -25,13 +25,12 @@ class ASCAP_Model : NSObject {
     var south_africa : Set = ["SOUTH AFRICA"]
     var south_america : Set = ["BRAZIL", "COLOMBIA", "VENEZUELA", "PERU", "ARGENTINA", "CHILE", "ECUADOR", "BOLIVIA" , "LATIN AMERICA"]
     
-    
-    
+
     
     
     //Main data proccessor function - sums up royalty sales per song per territory
     func process_data(contents: [String]){
-        let royalties_dict : [String:String] = createDict(arr: contents)
+        let royalties_dict : [String:String] = parseCSV(file_rows: contents)
         var final_list : [String] = []
         for (title,listing) in royalties_dict{
             count += 1
@@ -42,49 +41,98 @@ class ASCAP_Model : NSObject {
     }
     
     //creates dictionary of song titles and royalty amounts. Uses nested dictionary and returns a dictionary with the nested dictionary in String format
-    func createDict(arr : [String])->Dictionary<String, String>{
-        var song_dict : [String : [String : Double]] = ["TITLE NAME" : ["TERRITORY" : 0.0]]
-        var fin_dict : [String : String] = ["TITLE NAME" : "TERRITORY, AMOUNT"]
+    func parseCSV(file_rows : [String])->Dictionary<String, String>{
         
-        for index in 1...arr.count-2{
-            var row : [String] = arr[index].components(separatedBy: ",")
-            let name : String = row[13]
-            let amount : Double = Double(row[23])!
-            let territory : String = getTerritory(row: row)
-            
-            if song_dict[name] == nil{
-                var terr_dict : [String : Double] = [:]
-                terr_dict[territory] = amount
-                song_dict[name] = terr_dict
+        var song_dict : [String : [String : Double]] = [".TITLE NAME" : [".TERRITORY" : 0.0]]
+        var fin_dict : [String : String] = [".TITLE NAME" : ".TERRITORY, AMOUNT"]
+        
+        let delimiter = ","
+        var items:[(name:String, territory:String, price: String)]
+        var master_items : [(name:String, territory:String, price: String)]
+        
+        items = []
+        var break_count : Int = 0
+        for row in file_rows{
+            if (break_count == 0){
+                break_count += 1
+                continue
             }
-            else{
-                var temp_dict : [String : Double] = song_dict[name]!
-                if (temp_dict[territory]==nil){
-                    temp_dict[territory] = amount
+            var values:[String] = []
+            if row != "" {
+                if row.range(of: "\"") != nil {
+                    var textToScan:String = row
+                    var value:NSString?
+                    var textScanner:Scanner = Scanner(string: textToScan)
+                    while textScanner.string != "" {
+                        
+                        if (textScanner.string as NSString).substring(to: 1) == "\"" {
+                            textScanner.scanLocation += 1
+                            textScanner.scanUpTo("\"", into: &value)
+                            textScanner.scanLocation += 1
+                        }
+                        else {
+                            textScanner.scanUpTo(delimiter, into: &value)
+                        }
+                        values.append(value as! String)
+                        
+                        // Retrieve the unscanned remainder of the string
+                        if textScanner.scanLocation < textScanner.string.characters.count {
+                            textToScan = (textScanner.string as NSString).substring(from: textScanner.scanLocation + 1)
+                        } else {
+                            textToScan = ""
+                        }
+                        textScanner = Scanner(string: textToScan)
+                    }
+                    
+                }
+                else  {
+                    values = row.components(separatedBy: delimiter)
+                }
+                // Put the values into the tuple and add it to the items array
+                
+                
+                let terr : String = getTerritory(ostring: values[8])
+                let amount : Double = Double(values[23])!
+
+                let item = ((name:values[13], territory: terr, price: amount))
+
+                
+                if song_dict[item.name] == nil{
+                    var terr_dict : [String : Double] = [:]
+                    terr_dict[item.territory] = amount
+                    song_dict[item.name] = terr_dict
                 }
                 else{
-                    temp_dict[territory]! += amount
+                    var temp_dict : [String : Double] = song_dict[item.name]!
+                    if (temp_dict[item.territory]==nil){
+                        temp_dict[item.territory] = amount
+                    }
+                    else{
+                        temp_dict[item.territory]! += amount
+                    }
+                    song_dict[item.name] = temp_dict
                 }
-                song_dict[name] = temp_dict
+                var temp_string : String = ""
+                
+                //Turns the nested dictionary into a string in the specified format
+                for (place, price) in song_dict[item.name]!{
+                    temp_string = temp_string + place + ": " + ", " +  String(price) + "\n" + ","
+                }
+                
+                fin_dict[item.name] = temp_string
+                
             }
-            var temp_string : String = ""
-            
-            //Turns the nested dictionary into a string in the specified format
-            for (place, price) in song_dict[name]!{
-                temp_string = temp_string + place + ": " + ", " +  String(price) + "\n" + ","
-            }
-            
-            fin_dict[name] = temp_string
-            
         }
         return fin_dict
+
     }
     
-    
+        
     
     //gets the territory of the song
-    func getTerritory(row : [String])->String{
-        let tstring : String = row[8]
+    func getTerritory(ostring : String)->String{
+        
+        let tstring : String = ostring.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
         if north_america.contains(tstring){
             return "North America"
@@ -104,12 +152,10 @@ class ASCAP_Model : NSObject {
         if south_america.contains(tstring){
             return "South America"
         }
-        
         else{
             return "Unkown Territory"
         }
         
-        return tstring
     }
     
 

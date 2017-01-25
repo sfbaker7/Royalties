@@ -40,10 +40,23 @@ class Format_profile : NSObject{
             self.output_data = temp_data.findata
             self.count = temp_data.count
             processString()
-//            throw ProcessError.noFormat
             
-        case "ASCAP":
-            let temp_data = ASCAP_Model()
+        case "ASCAP International":
+            let temp_data = ASCAP_Model_International()
+            temp_data.process_data(contents: self.input_data)
+            self.output_data = temp_data.findata
+            self.count = temp_data.count
+            processString()
+            
+        case "ASCAP Domestic":
+            let temp_data = ASCAP_Model_Domestic()
+            temp_data.process_data(contents: self.input_data)
+            self.output_data = temp_data.findata
+            self.count = temp_data.count
+            processString()
+        
+        case "BMG":
+            let temp_data = BMG_Model()
             temp_data.process_data(contents: self.input_data)
             self.output_data = temp_data.findata
             self.count = temp_data.count

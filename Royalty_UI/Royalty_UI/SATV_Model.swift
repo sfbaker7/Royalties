@@ -112,10 +112,6 @@ class SATV_Model : NSObject {
         else{
             return "Unkown Territory"
         }
-        
-        
-        
-        return tstring
     }
     
     func getIncomeType(row : [String])->String{
