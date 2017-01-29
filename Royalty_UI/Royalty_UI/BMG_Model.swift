@@ -18,6 +18,8 @@ class BMG_Model : NSObject {
     var type : String = ""
     var amount : Double = 0.0
     var master_count : Int = 0
+    let delimiter = ","
+
     
     
     var north_america : Set = ["BHS", "BMU", "CAN", "MEX", "USA"]
@@ -42,7 +44,12 @@ class BMG_Model : NSObject {
         var final_list : [String] = []
         for (title,listing) in royalties_dict{
             count += 1
-            let temp : String = title + "," + listing  + "\n"
+            var tempstring : String = title
+            if (title.contains(",")){
+                var temparray : [String] = title.components(separatedBy: ",")
+                tempstring = temparray.joined(separator: "~")
+            }
+            let temp : String = tempstring + "," + listing  + "\n"
             final_list.append(temp)
         }
         self.findata = quicksort(final_list)
@@ -54,13 +61,12 @@ class BMG_Model : NSObject {
         var song_dict : [String : [String : [String : Double]]] = ["TITLE NAME" : ["TERRITORY" : ["INCOME TYPE" : 0.0]]]
         var fin_dict : [String : String] = ["TITLE NAME" : "TERRITORY, INCOME TYPE, AMOUNT"]
         
-        let delimiter = ","
         var items:[(name:String, territory:String, income_type: String, price: String)]
-        var master_items : [(name:String, territory:String, income_type: String, price: String)]
         
         items = []
         var break_count : Int = 0
         for row in file_rows{
+
             if (break_count == 0){
                 break_count += 1
                 continue
@@ -68,7 +74,10 @@ class BMG_Model : NSObject {
             var values:[String] = []
             if row != "" {
                 if row.range(of: "\"") != nil {
+                    print ("^^^^^^^^^^^^^^^^^")
+
                     var textToScan:String = row
+                    print("Text to scan: " + textToScan)
                     var value:NSString?
                     var textScanner:Scanner = Scanner(string: textToScan)
                     while textScanner.string != "" {
@@ -86,15 +95,18 @@ class BMG_Model : NSObject {
                         // Retrieve the unscanned remainder of the string
                         if textScanner.scanLocation < textScanner.string.characters.count {
                             textToScan = (textScanner.string as NSString).substring(from: textScanner.scanLocation + 1)
+
                         } else {
                             textToScan = ""
                         }
                         textScanner = Scanner(string: textToScan)
+                        print("Final Text Scanner: " + textScanner.string)
                     }
                     
                 }
                 else  {
                     values = row.components(separatedBy: delimiter)
+
                 }
                 // Put the values into the tuple and add it to the items array
                 let terr : String = getTerritory(ostring: values[21])

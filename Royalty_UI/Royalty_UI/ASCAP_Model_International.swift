@@ -16,6 +16,8 @@ class ASCAP_Model_International : NSObject {
     //    var territory : String = ""
     var type : String = ""
     var amount : Double = 0.0
+    let delimiter = ","
+
     
     
     var north_america : Set = ["CANADA", "MEXICO", "BERMUDA", "BARBADOS", "TRINIDAD & TOBAGO"]
@@ -34,7 +36,12 @@ class ASCAP_Model_International : NSObject {
         var final_list : [String] = []
         for (title,listing) in royalties_dict{
             count += 1
-            let temp : String = title + "," + listing  + "\n"
+            var tempstring : String = title
+            if (title.contains(",")){
+                var temparray : [String] = title.components(separatedBy: ",")
+                tempstring = temparray.joined(separator: "~")
+            }
+            let temp : String = tempstring + "," + listing  + "\n"
             final_list.append(temp)
         }
         self.findata = quicksort(final_list)
@@ -82,6 +89,8 @@ class ASCAP_Model_International : NSObject {
                             textToScan = ""
                         }
                         textScanner = Scanner(string: textToScan)
+                        print("Final Text Scanner: " + textScanner.string)
+
                     }
                     
                 }

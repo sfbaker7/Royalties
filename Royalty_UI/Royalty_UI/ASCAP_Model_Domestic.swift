@@ -13,6 +13,8 @@ class ASCAP_Model_Domestic: NSObject{
     
     var findata: Array<String> = []
     var count : Int = 0
+    let delimiter = ","
+
     
     
     
@@ -21,10 +23,17 @@ class ASCAP_Model_Domestic: NSObject{
         var royalties_dict : [String : Double]
         
         royalties_dict = createDict(arr: contents)
+//        royalties_dict = parseCSV(file_rows: contents)
         var final_list : [String] = []
         for (title, amount) in royalties_dict{
             count += 1
-            let temp : String = title + "," + String(amount) + "\n"
+            var tempstring : String = title
+            if (title.contains(",")){
+                var temparray : [String] = title.components(separatedBy: ",")
+                tempstring = temparray.joined(separator: "~")
+            }
+
+            let temp : String = tempstring + "," + String(amount) + "\n"
             final_list.append(temp)
             
         }
@@ -37,7 +46,6 @@ class ASCAP_Model_Domestic: NSObject{
     func parseCSV(file_rows : [String])->Dictionary<String, Double>{
         
         var dict : [String:Double] = [".TITLE NAME" : 0.0]
-        let delimiter = ","
         var items:[(name:String, price: String)]
         
         items = []
@@ -77,12 +85,9 @@ class ASCAP_Model_Domestic: NSObject{
                 }
                 else  {
                     values = row.components(separatedBy: delimiter)
-//                    print(row)
-
                 }
                 // Put the values into the tuple and add it to the items array
 
-                
                 let amount : Double = Double(values[29])!
                 print(amount)
 
@@ -107,8 +112,14 @@ class ASCAP_Model_Domestic: NSObject{
     func createDict(arr : [String]) -> Dictionary<String, Double> {
         
         var dict : [String:Double] = ["TITLE NAME" : 0.0]
+        print(arr.count)
+        print(arr[10])
         for index in 1...arr.count-2{
+            print("arr index: " + arr[index])
+            
             var row : [String] = arr[index].components(separatedBy: ",")
+            print(row)
+            print("Row count: " + String(row.count))
             print(row[29])
             let amount : Double = Double(row[29])!
             if dict[row[19]] == nil{

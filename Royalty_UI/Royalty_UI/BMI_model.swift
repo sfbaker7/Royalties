@@ -12,11 +12,14 @@ class BMI_model: NSObject{
     
     var findata: Array<String> = []
     var count : Int = 0
+    let delimiter = ","
+
 
     
     
     //Main data proccessor function - sums up royalty sales per song
     func process_data(contents: [String]) throws {
+        print(contents)
         var royalties_dict : [String : Double]
         do{
         royalties_dict = try createDict(arr: contents)
@@ -29,7 +32,13 @@ class BMI_model: NSObject{
         var final_list : [String] = []
         for (title, amount) in royalties_dict{
             count += 1
-            let temp : String = title + "," + String(amount) + "\n"
+            var tempstring : String = title
+            if (title.contains(",")){
+                var temparray : [String] = title.components(separatedBy: ",")
+                tempstring = temparray.joined(separator: "~")
+            }
+
+            let temp : String = tempstring + "," + String(amount) + "\n"
             final_list.append(temp)
             
         }
@@ -40,12 +49,16 @@ class BMI_model: NSObject{
     
     //creates dictionary of song titles and royalty amounts
     func createDict(arr : [String]) throws ->Dictionary<String, Double> {
-        
+        print (arr.count)
         var dict : [String:Double] = ["TITLE NAME" : 0.0]
-        for index in 1...arr.count-1{
+        for index in 1...arr.count-2{
             var row : [String] = arr[index].components(separatedBy: ",")
+            print(row)
+            print(row.count)
+            print(row[17])
             
-            let amount : Double = Double(row[row.count-10])!
+            
+            let amount : Double = Double(row[17])!
             if dict[row[5]] == nil{
                 dict[row[5]] = amount
             }
@@ -55,6 +68,7 @@ class BMI_model: NSObject{
         }
         return dict
     }
+    
     //Quicksort Algorithm
     func quicksort<T: Comparable>(_ a: [T]) -> [T]{
         guard a.count > 1 else { return a as! [T] }

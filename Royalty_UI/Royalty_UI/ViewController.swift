@@ -19,15 +19,16 @@ class ViewController: NSViewController {
     @IBOutlet weak var upload_button: NSButton!
     @IBOutlet weak var progress_bar: NSProgressIndicator!
     var profile = Format_profile()
-    
 
    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //format selector setup
-        format_selector.addItems(withTitles: ["ASCAP Domestic", "ASCAP International", "BMG", "BMI", "SATV"])
+        format_selector.addItems(withTitles: ["ASCAP Domestic", "ASCAP International", "BMG", "BMI"])
         format_selector.isTransparent = false
+        
+        progress_bar.isDisplayedWhenStopped = false
         
 
         
@@ -71,6 +72,7 @@ class ViewController: NSViewController {
 //            let file_rows = file_contents.components(separatedBy: NSCharacterSet.newlines) as [String]
             let file_rows = file_contents.components(separatedBy: "\n")
             temp_array = file_rows
+            print ("Text seperated by newline: " + String(file_rows.count))
         }
         catch {
             
@@ -87,6 +89,7 @@ class ViewController: NSViewController {
     
     @IBAction func handle_download(_ sender: Any) {
         //main data manipulation process
+        progress_bar.startAnimation(Any?)
         do{
             try self.profile.performProcess()
         }
@@ -102,6 +105,7 @@ class ViewController: NSViewController {
             self.communicator.stringValue = "Error: This File is Not Compatible for this Program"
             return
         }
+        progress_bar.stopAnimation(Any?)
         
         
         //Opens the save Panel
