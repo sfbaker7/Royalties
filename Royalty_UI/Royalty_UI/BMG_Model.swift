@@ -74,10 +74,8 @@ class BMG_Model : NSObject {
             var values:[String] = []
             if row != "" {
                 if row.range(of: "\"") != nil {
-                    print ("^^^^^^^^^^^^^^^^^")
 
                     var textToScan:String = row
-                    print("Text to scan: " + textToScan)
                     var value:NSString?
                     var textScanner:Scanner = Scanner(string: textToScan)
                     while textScanner.string != "" {
@@ -100,7 +98,6 @@ class BMG_Model : NSObject {
                             textToScan = ""
                         }
                         textScanner = Scanner(string: textToScan)
-                        print("Final Text Scanner: " + textScanner.string)
                     }
                     
                 }
@@ -157,7 +154,6 @@ class BMG_Model : NSObject {
                 items.append(item)
                 
             }
-            
             
             
         }
