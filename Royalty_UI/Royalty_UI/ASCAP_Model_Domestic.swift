@@ -29,7 +29,7 @@ class ASCAP_Model_Domestic: NSObject{
             count += 1
             var tempstring : String = title
             if (title.contains(",")){
-                var temparray : [String] = title.components(separatedBy: ",")
+                let temparray : [String] = title.components(separatedBy: ",")
                 tempstring = temparray.joined(separator: "~")
             }
 

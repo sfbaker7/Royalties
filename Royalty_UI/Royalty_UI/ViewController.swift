@@ -89,7 +89,7 @@ class ViewController: NSViewController {
     
     @IBAction func handle_download(_ sender: Any) {
         //main data manipulation process
-        progress_bar.startAnimation(Any?)
+        progress_bar.startAnimation(Any?.self)
         do{
             try self.profile.performProcess()
         }
@@ -105,7 +105,7 @@ class ViewController: NSViewController {
             self.communicator.stringValue = "Error: This File is Not Compatible for this Program"
             return
         }
-        progress_bar.stopAnimation(Any?)
+        progress_bar.stopAnimation(Any?.self)
         
         
         //Opens the save Panel

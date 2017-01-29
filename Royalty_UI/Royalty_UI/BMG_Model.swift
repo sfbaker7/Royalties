@@ -46,7 +46,7 @@ class BMG_Model : NSObject {
             count += 1
             var tempstring : String = title
             if (title.contains(",")){
-                var temparray : [String] = title.components(separatedBy: ",")
+                let temparray : [String] = title.components(separatedBy: ",")
                 tempstring = temparray.joined(separator: "~")
             }
             let temp : String = tempstring + "," + listing  + "\n"
@@ -216,19 +216,6 @@ class BMG_Model : NSObject {
         }
     }
     
-    func findElement_IT(instance_count : Int)->Int{
-        let difference : Int = instance_count-master_count
-        
-        
-        return 0
-        
-    }
-    
-    func findElement_Terr()->Int{
-        
-        return 0
-        
-    }
     
     
     //Quicksort Algorithm
